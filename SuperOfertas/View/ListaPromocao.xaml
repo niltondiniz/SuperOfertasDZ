@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SuperOfertas.ListaPromocao" xmlns:pages="clr-namespace:Xamarin.Forms.Pages;assembly=Xamarin.Forms.Pages" x:Name="ListaPromocaoPage" BackgroundColor="White" Title="Promoções">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<OnPlatform x:Key="TextoLabel" x:TypeArguments="Font" iOS="Small" Android="Medium" WinPhone="Medium" />
+			<Style x:Key="TextoLabelStyle" TargetType="Label">
+				<Setter Property="Font" Value="{DynamicResource TextoLabel}" />
+				<Setter Property="LineBreakMode" Value="WordWrap" />
+			</Style>
+			<OnPlatform x:Key="TituloLabel" x:TypeArguments="Font" iOS="Small" Android="Large" WinPhone="Large" />
+			<Style x:Key="TituloLabelStyle" TargetType="Label">
+				<Setter Property="Font" Value="{DynamicResource TituloLabel}" />
+				<Setter Property="TextColor" Value="#F44336" />
+				<Setter Property="LineBreakMode" Value="NoWrap" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<StackLayout>
+			<ListView x:Name="PromoList" ItemsSource="{Binding ListaItens}" SeparatorVisibility="None" HasUnevenRows="true" IsPullToRefreshEnabled="true">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid>
+								<Grid.Padding>
+									<OnPlatform x:TypeArguments="Thickness">
+										<OnPlatform.iOS>
+                                            10,5,10,5
+                                        </OnPlatform.iOS>
+										<OnPlatform.Android>
+                                            10,5,10,5
+                                        </OnPlatform.Android>
+										<OnPlatform.WinPhone>
+                                            20,25,20,25
+                                        </OnPlatform.WinPhone>
+									</OnPlatform>
+								</Grid.Padding>
+								<pages:CardView ImageSource="{Binding ImagemUrl}" Text="{Binding Titulo}" Detail="{Binding Descricao}" />
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
