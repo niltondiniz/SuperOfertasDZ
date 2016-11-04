@@ -9,14 +9,11 @@ namespace SuperOfertas
 {
 	public partial class ListaCompra : ContentPage
 	{
-		public List<ProdutoCompra> Lista { get; }
-		public ProdutoCompraViewModel listacompravm;
-
 		public ListaCompra()
 		{
-			listacompravm = new ProdutoCompraViewModel();
-			listacompravm.ListaCompra = new ObservableCollection<ProdutoCompra>(listacompravm.Listar());
-			BindingContext = listacompravm;
+			((App)App.Current).produtoCompraViewModel.page = this;
+			BindingContext = ((App)App.Current).produtoCompraViewModel;
+
 
 			/*
 			Lista = new ObservableCollection<Promocao>();
@@ -30,17 +27,25 @@ namespace SuperOfertas
 			InitializeComponent();
 		}
 
-		async void AddItem(object sender, EventArgs e)
+		public async void AddItem(object sender, EventArgs e)
 		{
-			PromptResult resposta;
-			resposta = await UserDialogs.Instance.PromptAsync("", "Adicionar a lista", "Inserir", "Cancelar", "Ex: 5Kg Feijão", InputType.Name);
-			if (resposta.Text != "")
-			{
-				ProdutoCompra item = new ProdutoCompra(1, resposta.Text, 0);
 
-				listacompravm.Insert<ProdutoCompra>(item);
-				listacompravm.ListaCompra.Add(item);
-			}
+			((App)App.Current).produtoCompraViewModel.Limpar();
+			var modalPage = new ItemCompra();
+			await Navigation.PushModalAsync(modalPage);
+
+
+
+
+			//PromptResult resposta;
+			//resposta = await UserDialogs.Instance.PromptAsync("", "Adicionar a lista", "Inserir", "Cancelar", "Ex: 5Kg Feijão", InputType.Name);
+			//if (resposta.Text != "")
+			//{
+			//	ProdutoCompra item = new ProdutoCompra(1, resposta.Text, 0);
+
+			//	listacompravm.Insert<ProdutoCompra>(item);
+			//	listacompravm.ListaCompra.Add(item);
+			//}
 		}
 
 		public async void OnDelete(object sender, EventArgs e)
@@ -50,16 +55,37 @@ namespace SuperOfertas
 			bool resposta = await DisplayAlert("Confirma exclusão do item?", listitem.Descricao, "Sim", "Não");
 			if (resposta)
 			{
-				listacompravm.Delete<ProdutoCompra>(listitem);
-				listacompravm.ListaCompra.Remove(listitem);
+				((App)App.Current).produtoCompraViewModel.Delete<ProdutoCompra>(listitem);
+				((App)App.Current).produtoCompraViewModel.ListaCompra.Remove(listitem);
+				((App)App.Current).produtoCompraViewModel.AtualizaLista();
+				((App)App.Current).produtoCompraViewModel.Total = ((App)App.Current).produtoCompraViewModel.TotalCompra();
 			}
+		}
+
+		public async void OnUpdate(object sender, EventArgs e)
+		{
+
+			var mi = ((MenuItem)sender);
+			var produto = (ProdutoCompra)mi.CommandParameter;
+
+			((App)App.Current).produtoCompraViewModel.Limpar();
+			((App)App.Current).produtoCompraViewModel.Id = produto.Id;
+			((App)App.Current).produtoCompraViewModel.Descricao = produto.Descricao;
+			((App)App.Current).produtoCompraViewModel.Quantidade = produto.Quantidade;
+			((App)App.Current).produtoCompraViewModel.Valor = produto.Valor;
+
+			var modalPage = new ItemCompra();
+			await Navigation.PushModalAsync(modalPage);
+			((App)App.Current).produtoCompraViewModel.TotalCompra();
+
+
 		}
 
 		public void StatusChange(object sender, ToggledEventArgs e)
 		{
 			var mi = ((ListSwitch)sender);
 			var listitem = (ProdutoCompra)mi.ProdutoCompra;
-			listacompravm.Update<ProdutoCompra>(listitem);
+			((App)App.Current).produtoCompraViewModel.Update<ProdutoCompra>(listitem);
 		}
 	}
 }

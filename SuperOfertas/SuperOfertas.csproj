@@ -54,6 +54,9 @@
     <EmbeddedResource Include="View\OfertaRelampago.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ItemCompra.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -102,6 +105,11 @@
     <Compile Include="View\OfertaRelampago.xaml.cs">
       <DependentUpon>OfertaRelampago.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ItemCompra.xaml.cs">
+      <DependentUpon>ItemCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Helper\CurrencyConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

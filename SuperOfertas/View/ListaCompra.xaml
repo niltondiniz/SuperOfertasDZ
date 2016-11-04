@@ -16,41 +16,51 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout Padding="5">
-			<ListView x:Name="ComprasList" BackgroundColor="White" ItemsSource="{Binding ListaCompra}" HasUnevenRows="true">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<ViewCell.ContextActions>
-								<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Excluir" Icon="ic_delete_white_24dp" IsDestructive="True" />
-							</ViewCell.ContextActions>
-							<Grid>
-								<Grid.Padding>
-									<OnPlatform x:TypeArguments="Thickness">
-										<OnPlatform.iOS>
+		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+			<StackLayout VerticalOptions="FillAndExpand">
+				<ListView x:Name="ComprasList" BackgroundColor="White" ItemsSource="{Binding ListaCompra}" HasUnevenRows="true">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<ViewCell.ContextActions>
+									<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Excluir" Icon="ic_delete_white_24dp" IsDestructive="True" />
+									<MenuItem Clicked="OnUpdate" CommandParameter="{Binding .}" Text="Editar" Icon="ic_edit_white" IsDestructive="False" />
+								</ViewCell.ContextActions>
+								<Grid>
+									<Grid.Padding>
+										<OnPlatform x:TypeArguments="Thickness">
+											<OnPlatform.iOS>
                                             10,5,10,5
                                         </OnPlatform.iOS>
-										<OnPlatform.Android>
+											<OnPlatform.Android>
                                             10,5,10,5
                                         </OnPlatform.Android>
-										<OnPlatform.WinPhone>
+											<OnPlatform.WinPhone>
                                             20,25,20,25
                                         </OnPlatform.WinPhone>
-									</OnPlatform>
-								</Grid.Padding>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="50" />
-								</Grid.ColumnDefinitions>
-								<StackLayout Orientation="Horizontal" x:Name="detItem" Grid.Column="0" Padding="8" Spacing="4" VerticalOptions="Center">
-									<local:ListSwitch HorizontalOptions="Start" IsToggled="{Binding Status}" Toggled="StatusChange" ProdutoCompra="{Binding .}" />
-									<Label Text="{Binding Descricao}" Style="{StaticResource TituloLabelStyle}" />
-								</StackLayout>
-							</Grid>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
+										</OnPlatform>
+									</Grid.Padding>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*" />
+										<ColumnDefinition Width="50" />
+									</Grid.ColumnDefinitions>
+									<StackLayout Orientation="Vertical">
+										<Label Text="{Binding Descricao}" FontSize="20" FontAttributes="Bold" Style="{StaticResource TituloLabelStyle}" />
+										<StackLayout Orientation="Horizontal" Grid.Column="0" Padding="8" Spacing="4" VerticalOptions="Center">
+											<Label Text="{Binding Quantidade}" />
+											<Label Text="X" />
+											<Label Text="{Binding Valor, StringFormat='{0:C2}'}" />
+										</StackLayout>
+									</StackLayout>
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="16" HeightRequest="30" BackgroundColor="Gray" Orientation="Horizontal">
+				<Label Text="{Binding Total, StringFormat='Total: {0:C2}'}" TextColor="White" FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+			</StackLayout>
 		</StackLayout>
 	</ContentPage.Content>
 	<ContentPage.ToolbarItems>

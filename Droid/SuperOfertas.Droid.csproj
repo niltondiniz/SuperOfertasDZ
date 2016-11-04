@@ -230,6 +230,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\iconsplash.png" />
     <AndroidResource Include="Resources\drawable\splash_screen.axml" />
     <AndroidResource Include="Resources\values\color.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_edit_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_edit_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_edit_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

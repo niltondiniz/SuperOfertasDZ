@@ -8,16 +8,19 @@ namespace SuperOfertas
 		public MasterPageViewModel masterPageViewModel;
 		public OfertaViewModel ofertaViewmModel;
 		public OfertaRelampagoViewModel relampagoViewModel;
+		public ProdutoCompraViewModel produtoCompraViewModel;
 
 
 		public App()
 		{
 			InitializeComponent();
 
-			vm = new ItemOfertaViewModel();
 			masterPageViewModel = new MasterPageViewModel();
 			ofertaViewmModel = new OfertaViewModel();
 			relampagoViewModel = new OfertaRelampagoViewModel();
+			vm = new ItemOfertaViewModel();
+			produtoCompraViewModel = new ProdutoCompraViewModel();
+
 			MainPage = new MainPage();
 		}
 

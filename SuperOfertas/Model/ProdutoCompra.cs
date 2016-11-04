@@ -4,27 +4,39 @@ using Xamarin.Forms;
 
 namespace SuperOfertas
 {
-	public class ProdutoCompra
+	[Table("produtocompra")]
+	public class ProdutoCompra : ModelBase
 	{
 		[PrimaryKey, AutoIncrement]
 		public int Id
 		{
-			get;
-			private set;
-
+			get { return GetValue<int>(); }
+			set { SetValue(value); }
 		}
 
 		[NotNull]
 		public string Descricao
 		{
-			get;
-			set;
+			get { return GetValue<string>(); }
+			set { SetValue(value); }
 		}
 
 		public int Status
 		{
-			get;
-			set;
+			get { return GetValue<int>(); }
+			set { SetValue(value); }
+		}
+
+		public int Quantidade
+		{
+			get { return GetValue<int>(); }
+			set { SetValue(value); }
+		}
+
+		public double Valor
+		{
+			get { return GetValue<double>(); }
+			set { SetValue(value); }
 		}
 
 		public ProdutoCompra(int id, string descricao, int status)
