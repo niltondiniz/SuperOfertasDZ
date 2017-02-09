@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="1.1" package="com.dz.superofertas.superofertas">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.2" package="com.dz.superofertas.superofertas">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -8,8 +8,20 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="com.dz.superofertas.superofertas.permission.C2D_MESSAGE" />
+	<permission android:name="com.dz.superofertas.superofertas.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<application android:label="SuperOfertas">
 		<!-- Put your Google Maps V2 API Key here. -->
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCs9IYB15mKft7hVE6HrlkR1K8K48IIIiU" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB30M3OoEjKkaErLZMDu-_2cv09AbR28wo" />
+		<receiver android:name="com.google.android.gms.gcm.GcmReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="com.dz.superofertas.superofertas" />
+			</intent-filter>
+		</receiver>
 	</application>
 </manifest>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -44,7 +44,7 @@ namespace SuperOfertas
 			}
 			catch (Exception e)
 			{
-				Debug.WriteLine("Exceção gerada em:{0} ", e.Message);
+				//Debug.WriteLine("Exceção gerada em:{0} ", e.Message);
 			}
 
 		}

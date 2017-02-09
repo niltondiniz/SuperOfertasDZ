@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using PushNotification.Plugin;
+using Xamarin.Forms;
 
 namespace SuperOfertas
 {
@@ -13,7 +14,10 @@ namespace SuperOfertas
 
 		public App()
 		{
+
+			//CrossPushNotification.Current.Register();
 			InitializeComponent();
+
 
 			masterPageViewModel = new MasterPageViewModel();
 			ofertaViewmModel = new OfertaViewModel();

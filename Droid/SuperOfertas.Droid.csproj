@@ -41,6 +41,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+<AndroidSupportedAbis>armeabi-v7a;armeabi;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -158,6 +159,16 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.2.3.3.152-pre2\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Gcm">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Gcm.25.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Gcm.dll</HintPath>
+    </Reference>
+    <Reference Include="PushNotification.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.PushNotification.1.2.4\lib\MonoAndroid10\PushNotification.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PushNotification.Plugin">
+      <HintPath>..\packages\Xam.Plugin.PushNotification.1.2.4\lib\MonoAndroid10\PushNotification.Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperOfertas\SuperOfertas.csproj">
@@ -173,12 +184,16 @@
     <Compile Include="SQLite.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="RegistrationIntentService.cs" />
+    <Compile Include="InstanceIdListenerService.cs" />
+    <Compile Include="GcmListenerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
+    <None Include="PushNotificationStarted.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />

@@ -6,7 +6,7 @@ using Plugin.Connectivity;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.ComponentModel;
 
 namespace SuperOfertas
@@ -146,7 +146,7 @@ namespace SuperOfertas
 			}
 			catch (Exception e)
 			{
-				Debug.WriteLine(e.Message);
+				//Debug.WriteLine(e.Message);
 			}
 		}
 
@@ -174,7 +174,7 @@ namespace SuperOfertas
 			}
 			catch (Exception e)
 			{
-				Debug.WriteLine(e.Message);
+				//Debug.WriteLine(e.Message);
 			}
 		}
 		public void GetOfertaRelampago()
@@ -195,7 +195,7 @@ namespace SuperOfertas
 			}
 			catch (Exception e)
 			{
-				Debug.WriteLine(e.Message);
+				//Debug.WriteLine(e.Message);
 			}
 		}
 	}
